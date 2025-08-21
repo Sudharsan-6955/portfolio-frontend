@@ -1,0 +1,118 @@
+// src/sections/Hero.jsx
+import React, { useRef, useState, useEffect, useContext } from "react";
+import { ThemeContext } from '../App';
+import useGsapHeroAnimation from "./useGsapHeroAnimation";
+import useTypingAnimation from "./useTypingAnimation";
+import ThreeDotsGsapLoader from "./ThreeDotsGsapLoader";
+
+const Hero = () => {
+  const heroRef = useRef(null);
+  const imgRef = useRef(null);
+  const [adminImage, setAdminImage] = useState(null);
+  const nameRef = useRef(null);
+  const roleRef = useRef(null);
+  const [loading, setLoading] = useState(true);
+  const [skills, setSkills] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/api/admin/skills")
+      .then((res) => res.json())
+      .then((data) => {
+        let newSkills = [];
+        if (data.skills) {
+          newSkills = data.skills.split(",").map(s => s.trim()).filter(Boolean);
+        }
+        setSkills(newSkills);
+      })
+      .catch(() => setSkills([]));
+  }, []);
+  const typedRole = useTypingAnimation(skills, 80, 1200);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1200); // Simulate loading
+    fetch("http://localhost:5000/api/admin/profile")
+      .then((res) => res.json())
+      .then((data) => setAdminImage(data.image))
+      .catch(() => setAdminImage(null));
+    return () => clearTimeout(timer);
+  }, []);
+
+  useGsapHeroAnimation(heroRef, imgRef, nameRef, roleRef, loading);
+
+  const { darkMode } = useContext(ThemeContext);
+  return (
+    <section
+      ref={heroRef}
+      id="home"
+      className={`h-screen flex flex-col items-center justify-center text-center relative overflow-hidden ${darkMode ? 'bg-neutral-900' : 'bg-white'}`}
+      style={{ background: darkMode ? "radial-gradient(circle, #18181b 60%, #27272a 100%)" : "radial-gradient(circle, white 60%, #c7c7f7 100%)" }}
+    >
+  <div className={`relative z-10 w-full flex flex-col items-center justify-center ${darkMode ? 'text-neutral-100' : 'text-gray-900'}` }>
+        {loading ? (
+          <ThreeDotsGsapLoader />
+        ) : (
+          <>
+            <h2 ref={nameRef} className="text-xl md:text-2xl font-medium tracking-wide mb-4 mt-10 font-['Poppins']">
+              HEY, I'M SUDHARASAN
+            </h2>
+            {/* Download Resume button - moved to top */}
+
+            <div className="flex flex-col md:flex-row items-center justify-center mb-4 w-full gap-6">
+              <img
+                ref={imgRef}
+                src={adminImage || "https://avatars.dicebear.com/api/bottts/boy.svg"}
+                alt="Admin Avatar"
+                className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white shadow-lg bg-white"
+              />
+              {/* <a
+                href="/resume.pdf"
+                download
+                className="inline-block px-6 py-2 bg-green-600 text-white rounded-full shadow hover:bg-green-700 transition text-sm md:text-base"
+              >
+                Download Resume
+              </a> */}
+            </div>
+            <h3 ref={roleRef} className="text-lg md:text-2xl font-light min-h-[2.5rem] font-['Poppins']">
+              {skills.length === 0 ? "No skills uploaded" : typedRole}
+            </h3>
+            {/* Tagline */}
+            {/* <p className="text-base md:text-lg text-gray-700 mt-2 mb-4 max-w-md font-['Roboto']">Building modern, scalable web experiences with passion and precision.</p> */}
+
+            {/* Call-to-action button */}
+            <a
+              href="#projects"
+              className="inline-block px-6 mt-10 py-2 bg-indigo-600 text-white rounded-full shadow hover:bg-indigo-700 transition mb-2 text-sm md:text-base"
+            >
+              View My Work
+            </a>
+
+            {/* Download Resume button */}
+            {/* <a
+              href="/resume.pdf"
+              download
+              className="inline-block px-6 py-2 bg-green-600 text-white rounded-full shadow hover:bg-green-700 transition mb-4 text-sm md:text-base"
+            >
+              Download Resume
+            </a> */}
+
+            {/* Social Icons */}
+            <div className="flex space-x-4 justify-center mb-4">
+              <a href="https://github.com/Sudharsan-6955/sudharsan-6955" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-gray-600 hover:text-indigo-600 text-2xl">
+                <svg fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.02c-3.2.7-3.87-1.54-3.87-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.75.41-1.27.75-1.56-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .98-.31 3.21 1.18a11.2 11.2 0 0 1 2.93-.39c.99.01 1.99.13 2.93.39 2.23-1.49 3.21-1.18 3.21-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.43-2.7 5.41-5.27 5.7.42.36.8 1.09.8 2.2v3.26c0 .31.21.67.8.56C20.71 21.39 24 17.08 24 12c0-6.27-5.23-11.5-12-11.5z" /></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/sudharsan-dev/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-gray-600 hover:text-indigo-600 text-2xl">
+                <svg fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11.75 20h-3v-10h3v10zm-1.5-11.25c-.97 0-1.75-.78-1.75-1.75s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.75-1.75 1.75zm15.25 11.25h-3v-5.5c0-1.32-.03-3-1.83-3-1.83 0-2.11 1.43-2.11 2.91v5.59h-3v-10h2.88v1.36h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v5.61z" /></svg>
+              </a>
+            </div>
+
+            {/* Scroll Down Indicator */}
+            <div className="absolute inset-x-0 bottom-3 flex justify-center pointer-events-none">
+              <span className="text-gray-500 text-4xl animate-bounce">ˇ</span>
+            </div>
+          </>
+        )}
+      </div>
+    </section>
+  );
+};
+
+export default Hero;

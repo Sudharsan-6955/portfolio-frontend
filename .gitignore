@@ -1,0 +1,50 @@
+
+# Dependency folders
+node_modules/
+backEnd/node_modules/
+
+# Build output
+dist/
+dist-ssr/
+.vite/
+.vite-temp/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment
+.env
+backEnd/.env
+
+# OS/Editor files
+.DS_Store
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Vite/Tailwind
+.vite/
+tailwind.config.js
+
+# Backend
+backEnd/logs/
+backEnd/*.log
+
+# Ignore backend folder
+backEnd/
+
+# Ignore lock files except package.json
+
+# Keep public and src folders
+!public/
+!src/
+!.vscode/extensions.json

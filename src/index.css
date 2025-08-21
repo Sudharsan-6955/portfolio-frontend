@@ -1,0 +1,33 @@
+@import "tailwindcss";
+html {
+  scroll-behavior: smooth;
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+}
+.nav-link {
+  position: relative;
+  display: inline-block;
+}
+.nav-link .nav-underline {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  background: #2563eb;
+  transition: width 0.3s;
+  width: 0;
+}
+.nav-link:hover .nav-underline,
+.nav-link.nav-active .nav-underline {
+  width: 100%;
+}
