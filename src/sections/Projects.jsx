@@ -1,6 +1,4 @@
 import React, { useEffect, useState, useContext } from "react";
-
-const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
 import { ThemeContext } from '../App';
 import { Element } from "react-scroll";
 
@@ -29,7 +27,7 @@ const Projects = () => {
   }, [projects]);
 
   useEffect(() => {
-  fetch(`${API_URL}/api/admin/projects`)
+    fetch("http://localhost:5000/api/admin/projects")
       .then((res) => res.json())
       .then((data) => {
         setProjects(data);
@@ -73,7 +71,7 @@ const Projects = () => {
             {loading ? (
               <div className="text-center w-full" style={{ background: 'transparent' }}>Loading projects...</div>
             ) : projects.length === 0 ? (
-              <div className="text-center w-full text-gray-500" style={{ background: 'transparent' }}>No projects .</div>
+              <div className="text-center w-full text-gray-500" style={{ background: 'transparent' }}>No projects found.</div>
             ) : (
               // Duplicate projects for seamless round loop
               [...projects, ...projects].map((project, index) => (

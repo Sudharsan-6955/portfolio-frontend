@@ -1,9 +1,11 @@
 
 # Dependency folders
 node_modules/
+backEnd/node_modules/
 
 # Build output
 dist/
+dist-ssr/
 .vite/
 .vite-temp/
 
@@ -17,6 +19,7 @@ lerna-debug.log*
 
 # Environment
 .env
+backEnd/.env
 
 # OS/Editor files
 .DS_Store
@@ -28,9 +31,20 @@ lerna-debug.log*
 *.sln
 *.sw?
 
+# Vite/Tailwind
+.vite/
+tailwind.config.js
+
+# Backend
+backEnd/logs/
+backEnd/*.log
+
+# Ignore backend folder
+backEnd/
+
 # Ignore lock files except package.json
-package-lock.json
 
 # Keep public and src folders
 !public/
 !src/
+!.vscode/extensions.json

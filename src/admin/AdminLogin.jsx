@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-
-const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
 import { useNavigate } from "react-router-dom";
 
 const AdminLogin = ({ onLogin }) => {
@@ -13,7 +11,7 @@ const AdminLogin = ({ onLogin }) => {
     e.preventDefault();
     setError("");
     try {
-  const res = await fetch(`${API_URL}/api/admin/login`, {
+      const res = await fetch("http://localhost:5000/api/admin/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
