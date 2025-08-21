@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+
 const AdminDashboard = () => {
   // State for project form
   const [project, setProject] = useState({ title: "", description: "", image: "", link: "" });
@@ -14,7 +16,7 @@ const AdminDashboard = () => {
 
   const fetchProjects = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/admin/projects");
+  const res = await fetch(`${API_URL}/api/admin/projects`);
       const data = await res.json();
       setProjects(data);
     } catch {
@@ -51,8 +53,8 @@ const AdminDashboard = () => {
     try {
       const method = editingId ? "PUT" : "POST";
       const url = editingId
-        ? `http://localhost:5000/api/admin/projects/${editingId}`
-        : "http://localhost:5000/api/admin/projects";
+        ? `${API_URL}/api/admin/projects/${editingId}`
+        : `${API_URL}/api/admin/projects`;
       const res = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
@@ -86,7 +88,7 @@ const AdminDashboard = () => {
   const handleDeleteProject = async (id) => {
     setStatus("");
     try {
-      const res = await fetch(`http://localhost:5000/api/admin/projects/${id}`, {
+  const res = await fetch(`${API_URL}/api/admin/projects/${id}`, {
         method: "DELETE",
       });
       if (res.ok) {
@@ -104,7 +106,7 @@ const AdminDashboard = () => {
     e.preventDefault();
     setStatus("");
     try {
-      const res = await fetch("http://localhost:5000/api/admin/profile", {
+  const res = await fetch(`${API_URL}/api/admin/profile`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ image: adminImage }),
@@ -124,7 +126,7 @@ const AdminDashboard = () => {
     e.preventDefault();
     setStatus("");
     try {
-      const res = await fetch("http://localhost:5000/api/admin/skills", {
+  const res = await fetch(`${API_URL}/api/admin/skills`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ skills }),

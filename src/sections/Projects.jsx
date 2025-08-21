@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
+
+const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
 import { ThemeContext } from '../App';
 import { Element } from "react-scroll";
 
@@ -27,7 +29,7 @@ const Projects = () => {
   }, [projects]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/admin/projects")
+  fetch(`${API_URL}/api/admin/projects`)
       .then((res) => res.json())
       .then((data) => {
         setProjects(data);

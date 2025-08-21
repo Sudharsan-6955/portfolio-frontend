@@ -1,5 +1,7 @@
 // src/sections/Contact.jsx
 import React, { useState, useContext } from "react";
+
+const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
 import { ThemeContext } from '../App';
 
 const Contact = () => {
@@ -14,7 +16,7 @@ const Contact = () => {
     e.preventDefault();
     setStatus("");
     try {
-      const res = await fetch("http://localhost:5000/api/messages/send", {
+  const res = await fetch(`${API_URL}/api/messages/send`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),

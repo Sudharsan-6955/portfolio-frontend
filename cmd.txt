@@ -4,3 +4,5 @@ npm install react-scroll
  npm install lucide-react 
  npm install react-tsparticles@2.11.0 tsparticles@2.11.0 // not add
   npm install react-scroll-parallax
+  npm install cloudinary //in backend
+  npm install multer //in backend

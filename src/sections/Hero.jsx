@@ -1,5 +1,7 @@
 // src/sections/Hero.jsx
 import React, { useRef, useState, useEffect, useContext } from "react";
+
+const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
 import { ThemeContext } from '../App';
 import useGsapHeroAnimation from "./useGsapHeroAnimation";
 import useTypingAnimation from "./useTypingAnimation";
@@ -14,7 +16,7 @@ const Hero = () => {
   const [loading, setLoading] = useState(true);
   const [skills, setSkills] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/api/admin/skills")
+  fetch(`${API_URL}/api/admin/skills`)
       .then((res) => res.json())
       .then((data) => {
         let newSkills = [];
@@ -29,7 +31,7 @@ const Hero = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1200); // Simulate loading
-    fetch("http://localhost:5000/api/admin/profile")
+  fetch(`${API_URL}/api/admin/profile`)
       .then((res) => res.json())
       .then((data) => setAdminImage(data.image))
       .catch(() => setAdminImage(null));
