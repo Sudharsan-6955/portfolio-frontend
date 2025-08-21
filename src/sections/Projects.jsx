@@ -27,7 +27,7 @@ const Projects = () => {
   }, [projects]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/admin/projects")
+  fetch("https://portfolio-backend-production-677e.up.railway.app/api/admin/projects")
       .then((res) => res.json())
       .then((data) => {
         setProjects(data);

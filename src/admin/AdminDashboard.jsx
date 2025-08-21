@@ -14,7 +14,7 @@ const AdminDashboard = () => {
 
   const fetchProjects = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/admin/projects");
+  const res = await fetch("https://portfolio-backend-production-677e.up.railway.app/api/admin/projects");
       const data = await res.json();
       setProjects(data);
     } catch {
@@ -51,8 +51,8 @@ const AdminDashboard = () => {
     try {
       const method = editingId ? "PUT" : "POST";
       const url = editingId
-        ? `http://localhost:5000/api/admin/projects/${editingId}`
-        : "http://localhost:5000/api/admin/projects";
+  ? `https://portfolio-backend-production-677e.up.railway.app/api/admin/projects/${editingId}`
+  : "https://portfolio-backend-production-677e.up.railway.app/api/admin/projects";
       const res = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
@@ -86,7 +86,7 @@ const AdminDashboard = () => {
   const handleDeleteProject = async (id) => {
     setStatus("");
     try {
-      const res = await fetch(`http://localhost:5000/api/admin/projects/${id}`, {
+  const res = await fetch(`https://portfolio-backend-production-677e.up.railway.app/api/admin/projects/${id}`, {
         method: "DELETE",
       });
       if (res.ok) {
@@ -104,7 +104,7 @@ const AdminDashboard = () => {
     e.preventDefault();
     setStatus("");
     try {
-      const res = await fetch("http://localhost:5000/api/admin/profile", {
+  const res = await fetch("https://portfolio-backend-production-677e.up.railway.app/api/admin/profile", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ image: adminImage }),
@@ -124,7 +124,7 @@ const AdminDashboard = () => {
     e.preventDefault();
     setStatus("");
     try {
-      const res = await fetch("http://localhost:5000/api/admin/skills", {
+  const res = await fetch("https://portfolio-backend-production-677e.up.railway.app/api/admin/skills", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ skills }),
