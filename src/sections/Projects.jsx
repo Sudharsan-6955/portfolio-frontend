@@ -73,7 +73,7 @@ const Projects = () => {
             {loading ? (
               <div className="text-center w-full" style={{ background: 'transparent' }}>Loading projects...</div>
             ) : projects.length === 0 ? (
-              <div className="text-center w-full text-gray-500" style={{ background: 'transparent' }}>No projects found.</div>
+              <div className="text-center w-full text-gray-500" style={{ background: 'transparent' }}>No projects .</div>
             ) : (
               // Duplicate projects for seamless round loop
               [...projects, ...projects].map((project, index) => (
