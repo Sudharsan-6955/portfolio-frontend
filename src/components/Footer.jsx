@@ -1,5 +1,6 @@
 // src/components/Footer.jsx
 import React, { useContext } from "react";
+import { Link } from 'react-router-dom';
 import { Typewriter } from 'react-simple-typewriter';
 import { ThemeContext } from '../App';
 
@@ -76,7 +77,7 @@ const Footer = () => {
 
     {/* Copyright */}
   <p className={`text-sm mt-6 ${darkMode ? 'text-neutral-400' : 'text-gray-500'}` }>
-          © {new Date().getFullYear()} <a href="/admin" className="underline hover:text-blue-600 transition" style={{cursor: 'pointer'}}>Sudhan</a>. All rights reserved.
+          © {new Date().getFullYear()} <Link to="/admin" className="underline hover:text-blue-600 transition" style={{cursor: 'pointer'}}>Sudharasan</Link>. All rights reserved.
         </p>
       </div>
     </footer>
