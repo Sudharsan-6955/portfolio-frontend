@@ -49,7 +49,7 @@ function App() {
           />
           <Route
             path="/admin"
-            element={isAdmin ? <AdminDashboard /> : <AdminLogin onLogin={() => setIsAdmin(true)} />}
+            element={<AdminDashboard />}
           />
         </Routes>
       </Router>
