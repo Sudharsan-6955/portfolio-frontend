@@ -2,7 +2,8 @@ npm install gsap
 npm install framer-motion
 npm install react-scroll
  npm install lucide-react 
+ npm install react-simple-typewriter
  npm install react-tsparticles@2.11.0 tsparticles@2.11.0 // not add
   npm install react-scroll-parallax
-  npm install cloudinary //in backend
+npm install react-tsparticles tsparticles  npm install cloudinary //in backend
   npm install multer //in backend

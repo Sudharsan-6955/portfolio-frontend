@@ -54,7 +54,7 @@ export default function Navbar() {
   return (
     <nav
       ref={navRef}
-  className={`fixed top-0 left-0 w-full backdrop-blur-lg shadow-lg z-50 rounded-b-2xl border-b border-blue-100 ${darkMode ? 'bg-neutral-900' : 'bg-white/80'}`}
+      className={`fixed top-0 left-0 w-full backdrop-blur-lg shadow-lg z-50  border-blue-100 bg-transparent`}
       style={{ boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)', fontFamily: 'Montserrat, sans-serif' }}
     >
       <style>{`
@@ -67,7 +67,7 @@ export default function Navbar() {
           opacity: 1 !important;
         }
       `}</style>
-  <div className={`container mx-auto px-8 py-3 flex items-center justify-between ${darkMode ? 'text-white' : ''}`}>
+  <div className={`w-full max-w-screen-xl mx-auto px-4 md:px-8 py-3 flex items-center justify-between ${darkMode ? 'text-white' : ''}`}>
         {/* Logo Left */}
         <div className="flex-1 flex items-center justify-start">
           <h1 className="text-2xl font-extrabold text-blue-700 tracking-wide drop-shadow-lg">
@@ -131,13 +131,13 @@ export default function Navbar() {
           </button>
           {/* Hamburger for mobile, right side */}
           <button
-            className="md:hidden flex flex-col space-y-1 p-2 rounded-lg bg-blue-50 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className={`md:hidden flex flex-col space-y-1 p-2 rounded-lg ${darkMode ? 'bg-neutral-800 hover:bg-neutral-700' : 'bg-blue-50 hover:bg-blue-100'} focus:outline-none focus:ring-2 focus:ring-blue-300`}
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
-            <span className={`w-8 h-0.5 bg-blue-700 transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-            <span className={`w-8 h-0.5 bg-blue-700 transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`w-8 h-0.5 bg-blue-700 transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+            <span className={`w-8 h-0.5 ${darkMode ? 'bg-white' : 'bg-blue-700'} transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+            <span className={`w-8 h-0.5 ${darkMode ? 'bg-white' : 'bg-blue-700'} transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
+            <span className={`w-8 h-0.5 ${darkMode ? 'bg-white' : 'bg-blue-700'} transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
           </button>
         </div>
       </div>
