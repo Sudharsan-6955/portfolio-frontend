@@ -16,7 +16,7 @@ const Hero = () => {
   const [loading, setLoading] = useState(true);
   const [skills, setSkills] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/api/admin/skills")
+  fetch("https://portfolio-backend-pgcv.onrender.com/api/admin/skills")
       .then((res) => res.json())
       .then((data) => {
         let newSkills = [];
@@ -31,7 +31,7 @@ const Hero = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1200);
-    fetch("http://localhost:5000/api/admin/profile")
+  fetch("https://portfolio-backend-pgcv.onrender.com/api/admin/profile")
       .then((res) => res.json())
       .then((data) => setAdminImage(data.image))
       .catch(() => setAdminImage(null));

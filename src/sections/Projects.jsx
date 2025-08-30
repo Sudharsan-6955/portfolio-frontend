@@ -13,7 +13,7 @@ const Projects = () => {
   // No JS scroll needed, use CSS animation for smooth infinite scroll
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/admin/projects")
+  fetch("https://portfolio-backend-pgcv.onrender.com/api/admin/projects")
       .then((res) => res.json())
       .then((data) => {
         setProjects(data);

@@ -14,7 +14,7 @@ const Contact = () => {
     e.preventDefault();
     setStatus("");
     try {
-      const res = await fetch("http://localhost:5000/api/messages/send", {
+      const res = await fetch("https://portfolio-backend-pgcv.onrender.com/api/messages/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
