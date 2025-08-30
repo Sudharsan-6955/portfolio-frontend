@@ -77,7 +77,7 @@ const Footer = () => {
 
     {/* Copyright */}
   <p className={`text-sm mt-6 ${darkMode ? 'text-neutral-400' : 'text-gray-500'}` }>
-          © {new Date().getFullYear()} <Link to="/admin" className="underline hover:text-blue-600 transition" style={{cursor: 'pointer'}}>Sudharasan</Link>. All rights reserved.
+          © {new Date().getFullYear()} <Link to="/admin-login" className="underline hover:text-blue-600 transition" style={{cursor: 'pointer'}}>Sudharasan</Link>. All rights reserved.
         </p>
       </div>
     </footer>
