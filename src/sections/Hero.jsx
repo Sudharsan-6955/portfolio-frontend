@@ -45,8 +45,7 @@ const Hero = () => {
     <section
       ref={heroRef}
       id="home"
-      className={`flex items-center justify-center relative overflow-hidden ${darkMode ? "bg-neutral-900" : "bg-white"
-        } min-h-[80vh] md:h-screen`}
+      className={`flex items-center justify-center relative overflow-hidden ${darkMode ? "bg-neutral-900" : "bg-white"} min-h-[80vh] md:h-screen`}
       style={{
         background: darkMode
           ? "radial-gradient(circle, #18181b 60%, #27272a 100%)"
@@ -56,9 +55,10 @@ const Hero = () => {
       {/* Particle background as a background layer */}
       <ParticleBackground />
 
+      {/* Centered container with same max width as Navbar */}
       <div
-        className={`relative z-10 w-full max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-center ${darkMode ? "text-neutral-100" : "text-gray-900"
-          }`}
+        className={`relative z-10 w-full max-w-screen-xl mx-auto flex flex-col-reverse md:flex-row items-center justify-center ${darkMode ? "text-neutral-100" : "text-gray-900"}`}
+        style={{paddingLeft: '1rem', paddingRight: '1rem'}}
       >
         {loading ? (
           <ThreeDotsGsapLoader />
@@ -76,7 +76,7 @@ const Hero = () => {
                 ref={roleRef}
                 className="text-base sm:text-lg md:text-2xl font-light min-h-[2.5rem] font-['Poppins'] mb-6"
               >
-                {skills.length === 0 ? "No skills uploaded" : (
+                {skills.length === 0 ? "Backend was loading" : (
                   <Typewriter
                     words={skills}
                     loop={1}

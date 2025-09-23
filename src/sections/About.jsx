@@ -11,19 +11,19 @@ const About = () => {
     return (
         <section
             id="about"
-            className={`flex items-center md:py-28 justify-center relative overflow-hidden ${darkMode ? "bg-neutral-900" : "bg-white"}`}
+            className={`flex items-center justify-center relative overflow-hidden ${darkMode ? "bg-neutral-900" : "bg-white"}`}
             style={{
                 background: darkMode
                     ? "radial-gradient(circle, #18181b 60%, #27272a 100%)"
                     : "radial-gradient(circle, white 60%, #c7c7f7 100%)",
-                minHeight: 'fit-content',
-                height: 'fit-content',
+                minHeight: '80vh',
+                height: 'auto',
             }}
         >
             {/* Particle background as a background layer */}
             <ParticleBackground />
                         {/* Animated Logos as background */}
-                            <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
+                            <div className="absolute inset-0 z-0 pointer-events-none hidden md:flex items-center justify-center">
                                 {/* JavaScript Logo - Official and More Visible, Animated Movement */}
                                 <motion.img
                                     src="https://cdn.worldvectorlogo.com/logos/javascript-1.svg"
@@ -90,14 +90,14 @@ const About = () => {
                         </div>
             {/* Main content above background logo */}
             <motion.div
-                className="w-full max-w-5xl mx-auto flex flex-col items-center justify-center relative z-10"
+                className="w-full max-w-screen-xl mx-auto flex flex-col items-center justify-center relative z-10 px-4"
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 viewport={{ once: true }}
             >
                 <motion.h3
-                    className={`text-lg font-medium mb-2 mt-2 ${darkMode ? 'text-neutral-100' : 'text-gray-900'}`}
+                    className={`text-xl sm:text-2xl font-semibold mb-4 mt-4 ${darkMode ? 'text-neutral-100' : 'text-gray-900'}`}
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.1 }}
@@ -106,7 +106,7 @@ const About = () => {
                     About me
                 </motion.h3>
                 <motion.h2
-                    className={`text-4xl text-center md:text-5xl font-bold mb-2 ${darkMode ? 'text-neutral-100' : 'text-gray-900'}`}
+                    className={`text-5xl sm:text-6xl text-center md:text-7xl font-extrabold mb-4 ${darkMode ? 'text-neutral-100' : 'text-gray-900'}`}
                     initial={{ opacity: 0, y: 60 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
@@ -117,7 +117,7 @@ const About = () => {
                     <span className="text-neutral-400">digital age</span>
                 </motion.h2>
                 <motion.p
-                    className={`max-w-2xl mx-auto text-center mb-4 ${darkMode ? 'text-neutral-400' : 'text-gray-700'}`}
+                    className={`max-w-2xl mx-auto text-center mb-8 text-lg sm:text-xl ${darkMode ? 'text-neutral-400' : 'text-gray-700'}`}
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.3 }}
@@ -129,7 +129,7 @@ const About = () => {
                 </motion.p>
                 {/* Skills Icons with parallax effect */}
                 <motion.div
-                    className="flex justify-center gap-6"
+                    className="flex justify-center gap-8 py-4"
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.4 }}

@@ -33,14 +33,14 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className={`py-16 relative`}
+      className={`flex items-center justify-center py-16 relative min-h-[70vh]`}
       style={{
         background: darkMode
           ? "radial-gradient(circle, #18181b 60%, #27272a 100%)"
           : "radial-gradient(circle, white 60%, #c7c7f7 100%)",
       }}
     >
-  <div className="container mx-auto px-4 sm:px-6">
+      <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6">
         <h2 className={`text-3xl font-bold text-center mb-4 ${darkMode ? 'text-neutral-100' : 'text-gray-900'}`}>Get In Touch</h2>
         <p className={`text-center mb-12 ${darkMode ? 'text-neutral-400' : 'text-gray-600'}`}>
           Have a project in mind? Let's connect and bring it to life.
