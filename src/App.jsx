@@ -6,6 +6,7 @@ import Footer from './components/Footer.jsx';
 import Contact from './sections/Contact.jsx';
 import AdminDashboard from './admin/AdminDashboard.jsx';
 import AdminLogin from './admin/AdminLogin.jsx';
+import ProtectedAdminRoute from './admin/ProtectedAdminRoute.jsx';
 
 import { useState, createContext, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -49,7 +50,11 @@ function App() {
           />
           <Route
             path="/admin"
-            element={<AdminDashboard />}
+            element={
+              <ProtectedAdminRoute>
+                <AdminDashboard />
+              </ProtectedAdminRoute>
+            }
           />
         </Routes>
       </Router>

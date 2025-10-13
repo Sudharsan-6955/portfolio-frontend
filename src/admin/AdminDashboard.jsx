@@ -13,9 +13,20 @@ const AdminDashboard = () => {
     fetchProjects();
   }, []);
 
+  // Helper to include token header
+  const getAuthHeaders = (extra = {}) => {
+    const token = localStorage.getItem('adminToken') || '';
+    return {
+      'Content-Type': 'application/json',
+      'x-admin-token': token,
+      ...extra,
+    };
+  };
+
+  // Fetch projects (GET stays public so no token required)
   const fetchProjects = async () => {
     try {
-  const res = await fetch("https://portfolio-backend-pgcv.onrender.com/api/admin/projects");
+      const res = await fetch("https://portfolio-backend-pgcv.onrender.com/api/admin/projects");
       const data = await res.json();
       setProjects(data);
     } catch {
@@ -52,11 +63,11 @@ const AdminDashboard = () => {
     try {
       const method = editingId ? "PUT" : "POST";
       const url = editingId
-  ? `https://portfolio-backend-pgcv.onrender.com/api/admin/projects/${editingId}`
-  : "https://portfolio-backend-pgcv.onrender.com/api/admin/projects";
+        ? `https://portfolio-backend-pgcv.onrender.com/api/admin/projects/${editingId}`
+        : "https://portfolio-backend-pgcv.onrender.com/api/admin/projects";
       const res = await fetch(url, {
         method,
-        headers: { "Content-Type": "application/json" },
+        headers: getAuthHeaders(),
         body: JSON.stringify(project),
       });
       if (res.ok) {
@@ -84,12 +95,13 @@ const AdminDashboard = () => {
     setEditingId(proj._id);
   };
 
-  // Delete project
+  // Delete project (protected)
   const handleDeleteProject = async (id) => {
     setStatus("");
     try {
-  const res = await fetch(`https://portfolio-backend-pgcv.onrender.com/api/admin/projects/${id}`, {
+      const res = await fetch(`https://portfolio-backend-pgcv.onrender.com/api/admin/projects/${id}`, {
         method: "DELETE",
+        headers: getAuthHeaders(),
       });
       if (res.ok) {
         setStatus("Project deleted!");
@@ -106,9 +118,9 @@ const AdminDashboard = () => {
     e.preventDefault();
     setStatus("");
     try {
-  const res = await fetch("https://portfolio-backend-pgcv.onrender.com/api/admin/profile", {
+      const res = await fetch("https://portfolio-backend-pgcv.onrender.com/api/admin/profile", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: getAuthHeaders(),
         body: JSON.stringify({ image: adminImage }),
       });
       if (res.ok) {
@@ -126,9 +138,9 @@ const AdminDashboard = () => {
     e.preventDefault();
     setStatus("");
     try {
-  const res = await fetch("http://localhost:5000/api/admin/skills", {
+      const res = await fetch("https://portfolio-backend-pgcv.onrender.com/api/admin/skills", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: getAuthHeaders(),
         body: JSON.stringify({ skills }),
       });
       if (res.ok) {
