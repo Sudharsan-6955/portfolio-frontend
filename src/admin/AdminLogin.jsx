@@ -81,18 +81,22 @@ const AdminLogin = ({ onLogin }) => {
       <h2 className="text-2xl font-bold mb-6 text-center">Admin Login</h2>
       <form onSubmit={handleSubmit}>
         <input
+          name="username"
           type="text"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          autoComplete="username"
           className="block w-full mb-4 p-2 border rounded"
           required
         />
         <input
+          name="password"
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          autoComplete="current-password"
           className="block w-full mb-4 p-2 border rounded"
           required
         />
