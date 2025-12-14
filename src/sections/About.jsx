@@ -102,7 +102,7 @@ const About = () => {
                     About me
                 </motion.h3>
                 <motion.h2
-                    className={`text-5xl sm:text-6xl text-center md:text-7xl font-extrabold mb-4 ${darkMode ? 'text-neutral-100' : 'text-gray-900'}`}
+                    className={`text-2xl sm:text-6xl text-center md:text-7xl font-extrabold mb-4 ${darkMode ? 'text-neutral-100' : 'text-gray-900'}`}
                     initial={{ opacity: 0, y: 60 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
