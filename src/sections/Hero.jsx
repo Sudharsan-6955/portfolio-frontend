@@ -38,7 +38,7 @@ const Hero = () => {
     <section
       ref={heroRef}
       id="home"
-      className={`flex items-center justify-center relative overflow-hidden ${darkMode ? "bg-neutral-900" : "bg-white"} h-1/2 md:h-screen pt-8 md:pt-0`}
+      className={`flex items-center justify-center relative sm:pt-10 overflow-hidden ${darkMode ? "bg-neutral-900" : "bg-white"} h-1/2 md:h-screen`}
       style={{
         background: darkMode ? "#18181b" : "#ffffff",
       }}
@@ -48,11 +48,11 @@ const Hero = () => {
 
       {/* Centered container with same max width as Navbar */}
       <div
-        className={`relative z-10 w-full max-w-screen-xl mx-auto flex flex-row md:flex-row items-center justify-between ${darkMode ? "text-neutral-100" : "text-gray-900"}`}
+        className={`relative z-10 w-full max-w-screen-xl mx-auto flex flex-row md:flex-row items-center justify-between gap-4 md:gap-0 pt-12 md:pt-0 ${darkMode ? "text-neutral-100" : "text-gray-900"}`}
         style={{paddingLeft: '1rem', paddingRight: '1rem'}}
       >
             {/* Left Side: Headings, Buttons, Socials */}
-            <div className="w-full md:w-1/2 flex flex-col items-start md:items-start justify-center text-left md:text-left px-2 sm:px-4 md:px-16 py-6 md:py-0">
+            <div className="w-1/2 md:w-1/2 flex flex-col items-start md:items-start justify-center text-left md:text-left px-2 sm:px-4 md:px-16 py-6  md:py-0 ">
               <h2
                 ref={nameRef}
                 className="text-lg sm:text-4xl md:text-6xl font-bold tracking-wide mb-2 sm:mb-4 mt-4 sm:mt-8 font-['Poppins']"
@@ -92,7 +92,7 @@ const Hero = () => {
             </div>
 
             {/* Right Side: Image */}
-            <div className="w-auto md:w-1/2 flex items-center justify-center md:justify-end flex-shrink-0 md:pr-8 lg:pr-16">
+            <div className="w-1/2 md:w-1/2 flex items-center justify-center md:justify-end flex-shrink-0 md:pr-8 lg:pr-16">
               <div className="relative items-center justify-center">
                 <style>{`
                   @keyframes smoothBounce {
