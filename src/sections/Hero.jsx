@@ -1,10 +1,8 @@
 // src/sections/Hero.jsx
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { ThemeContext } from "../App";
-import useGsapHeroAnimation from "./useGsapHeroAnimation";
 // import useTypingAnimation from "./useTypingAnimation";
 import { Typewriter } from 'react-simple-typewriter';
-import ThreeDotsGsapLoader from "./ThreeDotsGsapLoader";
 import ParticleBackground from "../components/ParticleBackground";
 
 const Hero = () => {
@@ -13,7 +11,6 @@ const Hero = () => {
   const [adminImage, setAdminImage] = useState(null);
   const nameRef = useRef(null);
   const roleRef = useRef(null);
-  const [loading, setLoading] = useState(true);
   const [skills, setSkills] = useState([]);
   useEffect(() => {
   fetch("https://portfolio-backend-pgcv.onrender.com/api/admin/skills")
@@ -30,40 +27,30 @@ const Hero = () => {
   // const typedRole = useTypingAnimation(skills, 80, 1200);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1200);
   fetch("https://portfolio-backend-pgcv.onrender.com/api/admin/profile")
       .then((res) => res.json())
       .then((data) => setAdminImage(data.image))
       .catch(() => setAdminImage(null));
-    return () => clearTimeout(timer);
   }, []);
-
-  useGsapHeroAnimation(heroRef, imgRef, nameRef, roleRef, loading);
 
   const { darkMode } = useContext(ThemeContext);
   return (
     <section
       ref={heroRef}
       id="home"
-      className={`flex items-center justify-center relative overflow-hidden ${darkMode ? "bg-neutral-900" : "bg-white"} min-h-[80vh] md:h-screen`}
+      className={`flex items-center justify-center relative overflow-hidden ${darkMode ? "bg-neutral-900" : "bg-white"} min-h-screen`}
       style={{
-        background: darkMode
-          ? "radial-gradient(circle, #18181b 60%, #27272a 100%)"
-          : "radial-gradient(circle, white 60%, #c7c7f7 100%)",
+        background: darkMode ? "#18181b" : "#ffffff",
       }}
     >
       {/* Particle background as a background layer */}
-      <ParticleBackground />
+      <ParticleBackground id="particles-hero" />
 
       {/* Centered container with same max width as Navbar */}
       <div
         className={`relative z-10 w-full max-w-screen-xl mx-auto flex flex-col-reverse md:flex-row items-center justify-center ${darkMode ? "text-neutral-100" : "text-gray-900"}`}
         style={{paddingLeft: '1rem', paddingRight: '1rem'}}
       >
-        {loading ? (
-          <ThreeDotsGsapLoader />
-        ) : (
-          <>
             {/* Left Side: Headings, Buttons, Socials */}
             <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center text-center md:text-left px-4 sm:px-8 md:px-16 py-6 md:py-0">
               <h2
@@ -90,8 +77,7 @@ const Hero = () => {
               </h3>
               <a
                 href="#projects"
-                className="inline-block px-6 sm:px-8 py-3 bg-indigo-600 text-white rounded-full shadow-lg hover:bg-indigo-700 transition mb-6 text-base sm:text-lg md:text-xl font-semibold"
-                style={{ minWidth: "160px", maxWidth: "260px" }}
+                className="cta-spotlight text-sm sm:text-base md:text-lg mb-6 min-w-[150px] max-w-[220px] px-6 py-1 rounded-2xl font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-cyan-500 hover:to-blue-600 transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-blue-500/50 transform hover:scale-110 hover:-translate-y-1 cursor-pointer"
               >
                 View My Work
               </a>
@@ -132,8 +118,6 @@ const Hero = () => {
             <div className="absolute inset-x-0 bottom-3 flex justify-center pointer-events-none">
               <span className="text-gray-500 text-4xl animate-bounce">ˇ</span>
             </div>
-          </>
-        )}
       </div>
     </section>
   );

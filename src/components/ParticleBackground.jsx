@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim"; // ✅ smaller bundle
 
-export default function ParticlesBackground({ className = "" }) {
+export default function ParticlesBackground({ className = "", id = "tsparticles" }) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function ParticlesBackground({ className = "" }) {
       background: { color: { value: "transparent" } },
       fpsLimit: 120,
       detectRetina: true,
-      fullScreen: { enable: false },
+      fullScreen: { enable: false, zIndex: 0 },
 
       interactivity: {
         events: {
@@ -31,25 +31,34 @@ export default function ParticlesBackground({ className = "" }) {
       },
 
       particles: {
-        number: { value: 60, density: { enable: true, area: 1000 } },
-        shape: { type: "circle" }, // ✅ only circles
-        size: { value: { min: 2, max: 4 } }, // a bit bigger for visibility
+        number: { value: 40, density: { enable: true, area: 600 } },
+        shape: { type: "circle" },
+        size: { value: { min: 2, max: 4 } },
         opacity: {
-          value: 0.6,
-          animation: { enable: true, speed: 0.5, minimumValue: 0.3 },
+          value: 0.7,
+          animation: { enable: true, speed: 0.5, minimumValue: 0.4 },
         },
         move: {
           enable: true,
-          speed: 0.8,
-          outModes: { default: "out" },
+          speed: 1.2,
+          direction: "none",
+          random: true,
+          straight: false,
+          outModes: { 
+            default: "bounce",
+            top: "bounce",
+            bottom: "bounce",
+            left: "bounce",
+            right: "bounce"
+          },
         },
-        color: { value: "#3b82f6" }, // ✅ solid blue
+        color: { value: "#3b82f6" },
         links: {
           enable: true,
           distance: 150,
-          opacity: 0.4,
-          width: 1,
-          color: "#60a5fa", // lighter blue for links
+          opacity: 0.5,
+          width: 1.5,
+          color: "#60a5fa",
         },
       },
     }),
@@ -59,8 +68,8 @@ export default function ParticlesBackground({ className = "" }) {
   if (!ready) return null;
 
   return (
-    <div className={`absolute inset-0 -z-10 w-full h-full ${className}`}>
-      <Particles id="tsparticles" options={options} />
+    <div className={`absolute inset-0 z-0 w-full h-full pointer-events-none ${className}`} style={{ minHeight: '100%' }}>
+      <Particles id={id} options={options} />
     </div>
   );
 }

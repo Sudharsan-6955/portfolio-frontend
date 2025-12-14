@@ -7,3 +7,5 @@ npm install react-scroll
   npm install react-scroll-parallax
 npm install react-tsparticles tsparticles  npm install cloudinary //in backend
   npm install multer //in backend
+  npm install jwt-decode
+  npm install jsonwebtoken

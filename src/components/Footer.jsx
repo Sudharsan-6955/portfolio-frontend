@@ -3,19 +3,21 @@ import React, { useContext } from "react";
 import { Link } from 'react-router-dom';
 import { Typewriter } from 'react-simple-typewriter';
 import { ThemeContext } from '../App';
+import ParticleBackground from "./ParticleBackground";
 
 const Footer = () => {
   const { darkMode } = useContext(ThemeContext);
   return (
     <footer
-      className={`border-t border-gray-300 py-8 relative`}
+      className={`border-t border-gray-300 py-8 relative overflow-hidden ${darkMode ? "bg-neutral-900" : "bg-white"}`}
       style={{
-        background: darkMode
-          ? "radial-gradient(circle, #18181b 60%, #27272a 100%)"
-          : "radial-gradient(circle, white 60%, #c7c7f7 100%)",
+        background: darkMode ? "#18181b" : "#ffffff",
       }}
     >
-          <style>{`
+      {/* Particle background as a background layer */}
+      <ParticleBackground id="particles-footer" />
+      
+      <style>{`
             @keyframes floatLogo {
               0% { transform: translateY(0); }
               50% { transform: translateY(-10px); }
@@ -26,7 +28,7 @@ const Footer = () => {
               display: inline-block;
             }
           `}</style>
-      <div className={`container mx-auto px-6 text-center ${darkMode ? 'text-neutral-400' : 'text-gray-700'}` }>
+      <div className={`container mx-auto px-6 text-center relative z-10 ${darkMode ? 'text-neutral-400' : 'text-gray-700'}` }>
         
     {/* Logo / Name */}
         <h1 className={`footer-logo-animate text-xl font-bold ${darkMode ? 'text-blue-400' : 'text-blue-600'}` }>
@@ -61,8 +63,8 @@ const Footer = () => {
                 z-index: 1;
               }
             `}</style>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" className={`footer-social-animate w-6 h-6 transition ${darkMode ? 'hover:brightness-150' : 'hover:opacity-80'}`} />
+            <a href="mailto:sudharsan638294@gmail.com" target="_blank" rel="noopener noreferrer">
+              <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail" className={`footer-social-animate w-6 h-6 transition ${darkMode ? 'hover:brightness-150' : 'hover:opacity-80'}`} />
             </a>
             <a href="#" target="_blank" rel="noopener noreferrer">
               <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" className={`footer-social-animate w-6 h-6 transition ${darkMode ? 'hover:brightness-150' : 'hover:opacity-80'}`} />

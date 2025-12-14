@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { Link } from "react-scroll";
-import gsap from "gsap";
 import { ThemeContext } from '../App';
 
 export default function Navbar() {
@@ -8,13 +7,6 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const navRef = useRef(null);
   const { darkMode, setDarkMode } = useContext(ThemeContext);
-  // Set initial style for animation
-  useEffect(() => {
-    if (navRef.current) {
-      navRef.current.style.opacity = 0;
-      navRef.current.style.transform = 'translateY(-100px)';
-    }
-  }, []);
 
   const navLinks = [
     { name: "Home", to: "home" },
@@ -24,32 +16,6 @@ export default function Navbar() {
   ];
   // Track active nav for underline
   const [activeNav, setActiveNav] = useState("home");
-
-  useEffect(() => {
-    // GSAP Animation for Navbar Load
-    gsap.to(navRef.current, {
-      y: 0,
-      opacity: 1,
-      duration: 1,
-      ease: "bounce.out",
-    });
-  }, []);
-
-  useEffect(() => {
-    if (isOpen) {
-      gsap.fromTo(
-        ".mobile-link",
-        { x: -100, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 0.5,
-          stagger: 0.1,
-          ease: "power3.out",
-        }
-      );
-    }
-  }, [isOpen]);
 
   return (
     <nav
