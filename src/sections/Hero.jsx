@@ -48,11 +48,11 @@ const Hero = () => {
 
       {/* Centered container with same max width as Navbar */}
       <div
-        className={`relative z-10 w-full max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0 pt-12 md:pt-0 ${darkMode ? "text-neutral-100" : "text-gray-900"}`}
+        className={`relative z-10 w-full max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2 md:gap-0 pt-8 pb-4 md:pt-0 md:pb-0 ${darkMode ? "text-neutral-100" : "text-gray-900"}`}
         style={{paddingLeft: '1rem', paddingRight: '1rem'}}
       >
             {/* Left Side: Headings, Buttons, Socials */}
-            <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center text-center md:text-left px-2 sm:px-4 md:px-16 py-6  md:py-0 ">
+            <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center text-center md:text-left px-2 sm:px-4 md:px-16 py-2 md:py-0 ">
               <h2
                 ref={nameRef}
                 className="text-lg sm:text-4xl md:text-6xl font-bold tracking-wide mb-2 sm:mb-4 mt-4 sm:mt-8 font-['Poppins']"

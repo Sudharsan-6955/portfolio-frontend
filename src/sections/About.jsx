@@ -11,11 +11,9 @@ const About = () => {
     return (
         <section
             id="about"
-            className={`flex items-center justify-center relative overflow-hidden ${darkMode ? "bg-neutral-900" : "bg-white"} min-h-screen md:h-screen`}
+            className={`flex items-center justify-center relative overflow-hidden ${darkMode ? "bg-neutral-900" : "bg-white"} min-h-fit md:min-h-screen py-8 md:py-16`}
             style={{
                 background: darkMode ? "#18181b" : "#ffffff",
-                paddingTop: '4rem',
-                paddingBottom: '4rem',
             }}
         >
             {/* Particle background as a background layer */}
