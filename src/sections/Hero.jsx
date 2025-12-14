@@ -38,10 +38,9 @@ const Hero = () => {
     <section
       ref={heroRef}
       id="home"
-      className={`flex items-center justify-center relative overflow-hidden ${darkMode ? "bg-neutral-900" : "bg-white"} min-h-screen md:h-screen`}
+      className={`flex items-center justify-center relative overflow-hidden ${darkMode ? "bg-neutral-900" : "bg-white"} h-1/2 md:h-screen pt-8 md:pt-0`}
       style={{
         background: darkMode ? "#18181b" : "#ffffff",
-        height: 'auto',
       }}
     >
       {/* Particle background as a background layer */}
