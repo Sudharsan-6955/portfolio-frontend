@@ -48,7 +48,7 @@ const Hero = () => {
 
       {/* Centered container with same max width as Navbar */}
       <div
-        className={`relative z-10 w-full max-w-screen-xl mx-auto flex flex-row md:flex-row items-center justify-between gap-4 md:gap-0 pt-12 md:pt-0 ${darkMode ? "text-neutral-100" : "text-gray-900"}`}
+        className={`relative z-10 w-full max-w-screen-xl mx-auto flex flex-row md:flex-row items-center justify-between gap-4 md:gap-0 mt-12 md:pt-0 ${darkMode ? "text-neutral-100" : "text-gray-900"}`}
         style={{paddingLeft: '1rem', paddingRight: '1rem'}}
       >
             {/* Left Side: Headings, Buttons, Socials */}
