@@ -52,7 +52,7 @@ const Hero = () => {
         style={{paddingLeft: '1rem', paddingRight: '1rem'}}
       >
             {/* Left Side: Headings, Buttons, Socials */}
-            <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center text-center md:text-left px-2 sm:px-4 md:px-16 py-2 md:py-0 ">
+            <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center text-center md:text-left px-4 sm:px-6 md:px-16 py-4 md:py-0 ">
               <h2
                 ref={nameRef}
                 className="text-lg sm:text-4xl md:text-6xl font-bold tracking-wide mb-2 sm:mb-4 mt-4 sm:mt-8 font-['Poppins']"
