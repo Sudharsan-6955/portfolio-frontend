@@ -112,7 +112,7 @@ export default function Navbar() {
 
       {/* Mobile Menu: show nav links and Let's Talk button only on small devices */}
       {isOpen && (
-        <ul className="md:hidden flex flex-col items-center space-y-6 py-8 bg-white/90 backdrop-blur-lg shadow-2xl text-lg font-semibold rounded-b-2xl border-b border-blue-100 animate-fade-in">
+        <ul className={`md:hidden flex flex-col items-center space-y-6 py-8 backdrop-blur-lg shadow-2xl text-lg font-semibold rounded-b-2xl border-b animate-fade-in ${darkMode ? 'bg-neutral-900/95 text-white border-neutral-700' : 'bg-white/90 text-gray-900 border-blue-100'}`}>
           {navLinks.map((link) => (
             <li key={link.to} className="mobile-link w-full text-center">
               <Link
@@ -122,7 +122,7 @@ export default function Navbar() {
                 offset={-80}
                 onClick={() => setIsOpen(false)}
                 activeClass="nav-active"
-                className={`nav-link cursor-pointer px-4 py-3 rounded-lg hover:text-blue-600 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-300 w-full block relative ${activeNav === link.to ? 'text-blue-600' : ''}`}
+                className={`nav-link cursor-pointer px-4 py-3 rounded-lg transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-300 w-full block relative ${activeNav === link.to ? 'text-blue-600' : darkMode ? 'text-neutral-200 hover:text-blue-400' : 'text-gray-900 hover:text-blue-600'}`}
                 onSetActive={() => setActiveNav(link.to)}
               >
                 <span className="relative z-10">{link.name}</span>
@@ -130,7 +130,7 @@ export default function Navbar() {
               </Link>
             </li>
           ))}
-          <li className="mobile-link w-full text-center">
+          <li className="mobile-link w-full text-center px-4">
             <Link
               to="contact"
               smooth
