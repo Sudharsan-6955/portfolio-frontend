@@ -56,7 +56,7 @@ const Projects = () => {
         className={`py-16 px-4 sm:px-8 md:px-16 relative overflow-hidden ${darkMode ? "bg-neutral-900" : "bg-white"}`}
         style={{
           background: darkMode ? "#18181b" : "#ffffff",
-          minHeight: '100vh',
+          minHeight: 'auto',
         }}
       >
         {/* Particle background as a background layer */}

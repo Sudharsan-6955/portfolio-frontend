@@ -5,12 +5,25 @@ import { loadSlim } from "@tsparticles/slim"; // ✅ smaller bundle
 
 export default function ParticlesBackground({ className = "", id = "tsparticles" }) {
   const [ready, setReady] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine); // ✅ init with slim version
     }).then(() => setReady(true));
   }, []);
+
+  // Don't show particles on mobile
+  if (isMobile) return null;
 
   const options = useMemo(
     () => ({

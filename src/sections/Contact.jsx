@@ -34,7 +34,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className={`flex items-center justify-center py-16 relative min-h-screen overflow-hidden ${darkMode ? "bg-neutral-900" : "bg-white"}`}
+      className={`flex items-center justify-center py-16 relative overflow-hidden ${darkMode ? "bg-neutral-900" : "bg-white"} min-h-screen md:h-screen`}
       style={{
         background: darkMode ? "#18181b" : "#ffffff",
       }}
@@ -152,7 +152,7 @@ const Contact = () => {
           </form>
 
           {/* Contact Details */}
-          <div className="w-full md:w-1/2 flex flex-col gap-6 md:pl-8">
+          <div className="hidden md:flex w-full md:w-1/2 flex-col gap-6 md:pl-8">
             <div className="space-y-2">
               <p className={`text-base leading-relaxed ${darkMode ? 'text-neutral-300' : 'text-gray-700'}`}>
                 Have a project in mind, a question, or an opportunity to collaborate?
