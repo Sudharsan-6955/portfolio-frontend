@@ -57,7 +57,7 @@ const Hero = () => {
                 ref={nameRef}
                 className="text-lg sm:text-4xl md:text-6xl font-bold tracking-wide mb-2 sm:mb-4 mt-4 sm:mt-8 font-['Poppins']"
               >
-                HII, I'M SUDHARASAN
+                HII, I'M SUDHARSAN
               </h2>
               <h3
                 ref={roleRef}
